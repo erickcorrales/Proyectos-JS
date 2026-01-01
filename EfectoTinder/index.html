@@ -24,17 +24,6 @@
             background-color: #eee;
         }
 
-        .white-bkg {
-            position: absolute;
-            background: #f6f6f6;
-            inset: 0;
-            z-index: -10;
-        }
-
-        .shadow {
-            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3))
-        }
-
         main {
             background: url('./src/imagenes/iphone.webp') no-repeat;
             width: 320px;
@@ -59,7 +48,7 @@
         header {
             display: flex;
             justify-content: center;
-            padding-left: 1rem;
+            padding: 8px 0px 0px;
 
             & img {
                 width: 24px;
@@ -71,7 +60,7 @@
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 12px;
-            padding: 0 24px;
+            padding: 0px 24px;
             justify-content: center;
             align-items: center;
 
@@ -85,32 +74,31 @@
                 border: 0;
                 cursor: pointer;
                 transition: scale .3s ease;
-            
 
                 &:hover {
                     scale: 1.4;
                 }
 
                 &.is-big {
-                    background-size: 250px;
-                    width: 48px;
-                    height: 48px;
+                    background-size: 252px;
+                    width: 45px;
+                    height: 45px;
                 }
 
                 &.is-undo {
-                    background-position: -140px 0;
+                    background-position: -142px 0;
                 }
 
                 &.is-remove {
-                    background-position: -150px 0;
+                    background-position: -153px 0;
                 }
 
                 &.is-fav {
-                    background-position: -50px 0;
+                    background-position: -51px 0;
                 }
 
-                & .is-star {
-                    background-position: -70px 0;
+                &.is-star {
+                    background-position: -71px 0;
                 }
             }
         }
@@ -121,7 +109,7 @@
             height: 100%;
             margin: 0 auto;
         
-            &>span {
+            & > span {
                 display: grid;
                 place-content: center;
                 color: #777;
@@ -155,12 +143,12 @@
                     transition: transform .3s ease, rotate .3s ease;
                 }
 
-                & .reset {
+                &.reset {
                     transition: transform .3s ease;
                     transform: translateX(0) !important;
                 }
 
-                &.choice {
+                & .choice {
                     border-radius: 8px;
                     color: black;
                     border: 4px solid;
@@ -174,15 +162,14 @@
                     font-weight: bold;
                     text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
                     width: fit-content;
-                
 
-                    & .nope {
+                    &.nope {
                         border-color: #ff6e63;
                         color: #ff6e63;
                         transform: rotate(30deg);
                     }
 
-                    & .like {
+                    &.like {
                         border-color: #63ff68;
                         color: #63ff68;
                         left: 16px;
@@ -222,52 +209,49 @@
 
 </head>
 <body>
-    <div class="shadow">
-        <main>
-            <section>
-                <div class="white-bkg"></div>
-                <header>
-                    <img src="./src/imagenes/tinder-logo.webp" alt="Logo Tinder">
-                </header>
+    <main>
+        <section>
+            <header>
+                <img src="./src/imagenes/tinder-logo.webp" alt="Logo Tinder">
+            </header>
 
-                <div class="cards">
-                    <article>
-                        <img src="./src/imagenes/melissa-1.jpg" alt="Melissa Robles, Hermosa Mujer">
-                        <h2>Melissa Robles <span>36</span></h2>
-                        <div class="choice nope">NOPE</div>
-                        <div class="choice like">LIKE</div>
-                    </article>
+            <div class="cards">
+                <article>
+                    <img src="./src/imagenes/melissa-1.jpg" alt="Melissa Robles, Hermosa Mujer">
+                    <h2>Melissa Robles <span>36</span></h2>
+                    <div class="choice nope">NOPE</div>
+                    <div class="choice like">LIKE</div>
+                </article>
 
-                    <article>
-                        <img src="src/imagenes/melissa.jpg" alt="Chloe Moretz, Hermosa Mujer">
-                        <h2>Melissa Robles <span>36</span></h2>
-                        <div class="choice nope">NOPE</div>
-                        <div class="choice like">LIKE</div>
-                    </article>
+                <article>
+                    <img src="src/imagenes/melissa.jpg" alt="Chloe Moretz, Hermosa Mujer">
+                    <h2>Melissa Robles <span>36</span></h2>
+                    <div class="choice nope">NOPE</div>
+                    <div class="choice like">LIKE</div>
+                </article>
 
-                    <article>
-                        <img src="./src/imagenes/chloe-grace.jpg" alt="Chloe Grace Moretz">
-                        <h2>Chloe Grace Moretz <span>28</span></h2>
-                        <div class="choice nope">NOPE</div>
-                        <div class="choice like">LIKE</div>
-                    </article>
-                    
-                    <span>
-                        No hay más personas cerca de ti...<br>
-                        Vuele a intentarlo más tarde.
-                    </span>
-                </div>
+                <article>
+                    <img src="./src/imagenes/chloe-grace.jpg" alt="Chloe Grace Moretz">
+                    <h2>Chloe Grace Moretz <span>28</span></h2>
+                    <div class="choice nope">NOPE</div>
+                    <div class="choice like">LIKE</div>
+                </article>
+                
+                <span>
+                    No hay más personas cerca de ti...<br>
+                    Vuele a intentarlo más tarde.
+                </span>
+            </div>
 
-                <footer>
-                    <button class="is-undo" aria-label="undo"></button>
-                    <button class="is-remove is-big" aria-label="remove"></button>
-                    <button class="is-star" aria-label="star"></button>
-                    <button class="is-fav is-big" aria-label="fav"></button>
-                    <button class="is-zap" aria-label="zap"></button>
-                </footer>
-            </section>
-        </main>
-    </div>
+            <footer>
+                <button class="is-undo" aria-label="undo"></button>
+                <button class="is-remove is-big" aria-label="remove"></button>
+                <button class="is-star" aria-label="star"></button>
+                <button class="is-fav is-big" aria-label="fav"></button>
+                <button class="is-zap" aria-label="zap"></button>
+            </footer>
+        </section>
+    </main>
 
     <script>
         // JavaScript code will go here
@@ -311,6 +295,9 @@
 
                     // calculate the rotation of the card using the distance
                     const deg = pullDeltaX / 14
+
+                    // apply the transformation to the card
+                    actualCard.style.transform = `translateX(${pullDeltaX}px) rotate(${deg}deg)`
 
                     // apply the transformation to the card
                     actualCard.style.cursor = 'grabbing'
