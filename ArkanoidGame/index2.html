@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-color: gray;
+        }
+        canvas {
+            display: block;
+            margin: auto;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas></canvas>
+
+    <script>
+        const canvas = document.querySelector('canvas')
+        const ctx =  canvas.getContext('2d')
+
+        canvas.width = 800
+        canvas.height = 600
+
+        let x = canvas.width / 2
+        let y = canvas.height - 30
+
+        let dx = -3
+        let dy = -3
+
+        const ballRadius = 3
+
+        let gameOver = false
+
+        function drawBall() {
+            ctx.beginPath()
+            ctx.arc(x, y, ballRadius, 0, Math.PI * 2)
+            ctx.fillStyle = '#fff'
+            ctx.fill()
+            ctx.closePath()
+        }
+
+        function ballMovements() {
+            if (
+                x + dx > canvas.width - ballRadius ||
+                x + dx < ballRadius
+            ) {
+                dx = -dx
+            }
+
+            if (
+                y + dy < ballRadius
+            ) {
+                dy = -dy
+            }
+
+            if (y + dy > canvas.height - ballRadius) {
+                gameOver = true
+                console.log('Game Over')
+                window.location.reload()
+            }
+
+            x += dx
+            y += dy
+        }
+
+        function cleanCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+        }
+
+        function draw() {
+
+            // Limpiar canvas
+            cleanCanvas()
+
+            // Dibujar elementos del juego
+            drawBall()
+
+            // Movimientos y colisiones
+            ballMovements()
+            
+
+            // Redibujar cada cierto tiempo el juego
+            requestAnimationFrame(draw)
+        }
+
+        draw()
+    </script>
+    
+</body>
+</html>
