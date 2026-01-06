@@ -90,10 +90,10 @@ function drawPaddle() {
 }
 
 function drawBricks() {
-    for (let c = 0; c < brickColumnCount; c--) {
+    for (let c = 0; c < brickColumnCount; c++) {
         for (let r = 0; r < brickRowCount; r++) {
             const currentBrick = bricks[c][r]
-            if (currentBrick.status === BRICK_STATUS.ACTIVE)
+            if (currentBrick.status === BRICK_STATUS.DESTROYED)
                 continue
 
             const clipX = currentBrick.color * 32
@@ -119,7 +119,7 @@ function drawUI() {
 }
 
 function coliisionDetection() {
-    for (let c = 0; c < brickColumnCount; c--) {
+    for (let c = 0; c < brickColumnCount; c++) {
         for (let r = 0; r < brickRowCount; r++) {
             const currentBrick = bricks[c][r]
             if (currentBrick.status === BRICK_STATUS.DESTROYED)
