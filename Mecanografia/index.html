@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reto de Mecanografía</title>
+
+    <style>
+        :root {
+            color-scheme: light dark;
+            --green: #00b755;
+            --yellow: #daaf38;
+            --red: #ca4754;
+            --black: #222;
+            --gray: #999;
+        }
+
+        body {
+            background: var(--black);
+            font-family: monospace;
+            display: grid;
+            padding: 32px;
+            justify-content: center;
+            margin-top: 32px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <time></time>
+            <p></p>
+            <input autofocus>
+        </section>
+    </main>
+
+    <script>
+        const $time = document.querySelector('time')
+        const $p = document.querySelector('p')
+        const $input = document.querySelector('input')
+
+        const INITIAL_TIME = 30
+
+        const TEXT = 'The quick brown fox jumps over the lazy dog and midudev' + 
+        ' is trying to clone monkey type for fun and profit using vanilla JS for' +
+        ' the typing test and improve his typing skills in the process'
+
+        let words = []
+        let currentTime = INITIAL_TIME
+
+        initGame()
+
+        function initGame() {
+            words = TEXT.split(' ')
+            currentTime = INITIAL_TIME
+
+            $time.textContent = currentTime
+
+            $p.innerHTML = words.map((word, index) => {
+                const letters = word.split('')
+
+                return `<x-word>
+                    ${letters
+                        .map(letter => `<x-letter>${letter}</x-letter>`)
+                        .join('')
+                    }
+                </x-word>`
+            }).join('')
+        }
+
+    </script>
+</body>
+</html>
